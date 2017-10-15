@@ -1,37 +1,10 @@
 'use strict';
 const Sequelize = require('sequelize');
-const db = require('../')
+const db = require('../');
 const Faker = require('faker');
+const Student = require('./student');
+const Campus = require('./campus');
 
-const Campus = db.define('campus', {
-	name: {
-		type: Sequelize.STRING,
-		allowNull: false
-	},
-	image: {
-		type: Sequelize.STRING,
-		allowNull:false
-		}
-});
-
-const Student = db.define('student',{
-	name: {
-		type: Sequelize.STRING,
-		allowNull: false
-	},
-	email: {
-		type: Sequelize.STRING,
-		isEmail: true
-	},
-	github: {
-		type: Sequelize.STRING,
-		allowNull: true
-	},
-	// GPA: {
-	// 	type: Sequelize.DECIMAL,
-	// 	allowNull: false
-	// }
-});
 //Campus.hasMany(Student)
 Student.belongsTo(Campus);
 
@@ -54,4 +27,4 @@ Student.belongsTo(Campus);
 // This is also probably a good place for you to set up your associations
 
 
-module.exports = {db, Campus, Student}
+module.exports = {db, Student, Campus}

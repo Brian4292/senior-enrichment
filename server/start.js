@@ -37,9 +37,11 @@ if (module === require.main) {
   const PORT = 1337
 
   const db = require('../db')
-  db.sync()
+  const Student = require('../db').Student;
+  db.sync({force:false})
   .then(() => {
     console.log('db synced')
     app.listen(PORT, () => console.log(`server listening on port ${PORT}`))
+    
   });
 }

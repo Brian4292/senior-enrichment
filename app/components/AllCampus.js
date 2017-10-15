@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 export default class AllCampus extends Component {
 	constructor() {
 		super();
 		this.state = {
-      campuses: []
-    }
+      campuses: [],
+      selectedCampus: ''
+    };
   }
   
   componentDidMount() {
@@ -21,23 +24,27 @@ export default class AllCampus extends Component {
 			.catch(err => {
 				console.error('error');
 				console.error(err);
-			})
+			});
 	}
 
   render() {	
-    const image ={ backgroundImage: 'url(../../img/Campus1.png', height: '200px' }
+    //const image = { backgroundImage: 'url(https://www.pluralsight.com/content/dam/pluralsight/product-release/icon-ruby.png)', height: '512px' }
     return (
       <ol>
-      {this.state.campuses.length &&this.state.campuses.map((campus,idx)=>{
+      {this.state.campuses.length && this.state.campuses.map((campus, idx) => {
         return (
-            <div>
+            <Link to={`/campus/${campus.id}`}>
             <li key={idx}>{campus.name}</li>
-                <div style={image}>
+                <div style={{ backgroundImage: `url(${campus.image})`, height: '512px', width:'512px' }}>
                 </div>
-                </div>
+                </Link>
         )
       })}
 			</ol>
 		)
 	}
 }
+
+// <Link to={`/students`}>
+// <button>students</button>
+// </Link >

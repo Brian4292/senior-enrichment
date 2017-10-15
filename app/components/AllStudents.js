@@ -28,7 +28,7 @@ export default class AllStudents extends Component {
 		return (
       <ol>
       {this.state.students.length &&this.state.students.map((student,idx)=>{
-        return (<li key={idx}>{student.name}</li>)
+        return (<li key={idx}>{student.name + ' ' + student.campus.name}</li>)
       })}
 			</ol>
 		)

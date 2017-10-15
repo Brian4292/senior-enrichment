@@ -3,13 +3,22 @@ const router = express.Router();
 module.exports = router;
 Student = require('../db/models').Student;
 
+// router.get('/', (req, res, next) => {
+//   Student.findAll()
+//     .then(students => {
+//       res.json(students);
+//     })
+//     .catch(next);
+// });
+
 router.get('/', (req, res, next) => {
-  Student.findAll()
+  Student.findAll({include: [{all: true}]})
     .then(students => {
       res.json(students);
     })
     .catch(next);
 });
+
 
 router.get('/:id', (req, res, next) => {
   const id = req.params.id;

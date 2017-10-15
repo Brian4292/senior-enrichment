@@ -3,6 +3,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const {resolve} = require('path')
+const Faker = require('faker');
+const Student = require('../db/models').Student;
 
 const app = express()
 
@@ -45,3 +47,11 @@ if (module === require.main) {
     
   });
 }
+
+// for(let i =0;i<20;i++){     //figure out how to use a seed file
+// 	Student.create({   
+// 	name: Faker.name.findName(),
+// 	email :Faker.internet.email(),
+// 	github: Faker.internet.userName(),
+//   })
+//   }

@@ -1,13 +1,9 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 module.exports = router;
-Student = require("../db/models").Student;
+Student = require('../db/models').Student;
 
-// router.get('/z', (req,res,next)=>{
-//    res.send('ss')
-// })
-
-router.get("/", (req, res, next) => {
+router.get('/', (req, res, next) => {
   Student.findAll()
     .then(students => {
       res.json(students);
@@ -15,7 +11,7 @@ router.get("/", (req, res, next) => {
     .catch(next);
 });
 
-router.get("/:id", (req, res, next) => {
+router.get('/:id', (req, res, next) => {
   const id = req.params.id;
   Student.findById(id)
     .then(student => {
@@ -24,7 +20,7 @@ router.get("/:id", (req, res, next) => {
     .catch(next);
 });
 
-router.post("/", (req, res, next) => {
+router.post('/', (req, res, next) => {
   Student.create(req.body)
     .then(createdStudent => {
       res.json(createdStudent);
@@ -32,7 +28,7 @@ router.post("/", (req, res, next) => {
     .catch(next);
 });
 
-router.put("/", (req, res, next) => {
+router.put('/', (req, res, next) => {
   Student.update(req.body)
     .then(updatedStudent => {
       res.json(updatedStudent);
@@ -40,7 +36,7 @@ router.put("/", (req, res, next) => {
     .catch(next);
 });
 
-router.delete("/:id", (req, res, next) => {
+router.delete('/:id', (req, res, next) => {
   const id = req.params.id;
   Student.destroy({
     where: {
@@ -48,7 +44,7 @@ router.delete("/:id", (req, res, next) => {
     }
   })
     .then(() => {
-      res.send("deleted");
+      res.send('deleted');
     })
     .catch(next);
 });

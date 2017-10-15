@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 module.exports = router;
 Campus = require('../db/models/').Campus;
+Student = require('../db/models').Student;
+
 
 router.get('/', (req, res, next) => {
   Campus.findAll()
@@ -13,12 +15,27 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   const id = req.params.id;
-  Campus.findById(id)
+  Student.findAll({
+      where:{
+        campusId:id
+      }
+  })
     .then(Campus => {
       res.json(Campus);
     })
     .catch(next);
 });
+
+// router.get('/:id', (req, res, next) => {  //didnt do many to many
+//   const id = req.params.id;
+//   Campus.findAll(
+//     {include: [{id}]}
+//   )
+//     .then(Campus => {
+//       res.json(Campus);
+//     })
+//     .catch(next);
+// });
 
 router.post('/', (req, res, next) => {
   Campus.create(req.body)

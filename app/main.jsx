@@ -12,6 +12,7 @@ import { Link, HashRouter, Route } from 'react-router-dom';
 import AllStudents from './components/AllStudents';
 import AllCampus from './components/AllCampus';
 import SingleCampus from './components/SingleCampus';
+import AddStudent from './components/AddStudent';
 
 export default class Main extends Component {
 	constructor() {
@@ -44,8 +45,9 @@ render(
 		<button>Campus</button>
 		</Link >
 		<Route exact path="/" component={AllCampus} />
-		<Route exact path="/campus/:campusId" component={SingleCampus}/>	
+		<Route exact path="/campus/:campusId" component={SingleCampus} />	
 		<Route exact path="/students" component={AllStudents} />
+		<Route exact path='/enroll' component={AddStudent} />
 		</div>
 		</HashRouter>
   ,

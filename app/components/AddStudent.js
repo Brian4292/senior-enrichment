@@ -12,6 +12,7 @@ export default class AddStudent extends Component {
             selectedCampus: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -34,29 +35,42 @@ handleSubmit(event){
 
 }
 
+handleChange(event){
+    const value = event.target.value;
+    const name = event.target.name;
+
+    this.setState({
+      [name]: value
+    });
+    console.log(this.state)
+}
+
   render() {
 		return (
-            <form onSubmit={this.handleSubmit}>
+            <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
                 <label> Name:
                     <div>
-                        <input type="text" name="name" />
+                        <input type="text" name="studentName" />
                      </div>
                 </label>
                 <label> Email:
                     <div>
-                        <input type="text" name="name" />
+                        <input type="text" name="studentEmail" />
                         </div>
-                </label> Githb Account:
+                </label> Github Account:
                 <label>
                     <div>
-                        <input type="text" name="name" />
+                        <input type="text" name="studentAccount" />
                      </div>
-                       <select>
-                       {this.state.campuses && this.state.campuses.map(campus=>{
+                </label>
+                <label> Select Campus:</label>
+                       <select name='selectedCampus'>
+                       <option >campuses</option>
+                       {this.state.campuses && this.state.campuses.map(campus =>{
                            return (<option value={campus.id} key={campus.name}>{campus.name}</option>)
                        })}
                        </select>
-                 </label> Campus:
+                 <br/>
                 <input type="submit" value="Submit" />
           </form>
 		);

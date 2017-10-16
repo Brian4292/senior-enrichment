@@ -31,9 +31,22 @@ export default class AddStudent extends Component {
 
 handleSubmit(event){
     event.preventDefault();
-    console.log(1)
+   const studentForm ={
+        name: this.state.studentName,
+         email: this.state.studentEmail, 
+         github: this.state.studentAccount, 
+         campusId: this.state.selectedCampus
+        }
+        axios.post('/api/students', studentForm)
+        .then(res => res.data)
+        .then(result => {
+          console.log("*********",result) // response json from the server!
+        });
 
-}
+        this.setState({input: ""});       
+} 
+
+
 
 handleChange(event){
     const value = event.target.value;
@@ -46,6 +59,7 @@ handleChange(event){
 }
 
   render() {
+      console.log(this.state)
 		return (
             <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
                 <label> Name:

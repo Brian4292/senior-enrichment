@@ -30,12 +30,12 @@ export default class AddStudent extends Component {
 }
 
 handleSubmit(event){
-    event.preventDefault();
-   const studentForm ={
+   event.preventDefault();
+   const studentForm = {
         name: this.state.studentName,
-         email: this.state.studentEmail, 
-         github: this.state.studentAccount, 
-         campusId: this.state.selectedCampus
+        email: this.state.studentEmail, 
+        github: this.state.studentAccount, 
+        campusId: this.state.selectedCampus
         }
         axios.post('/api/students', studentForm)
         .then(res => res.data)
@@ -43,7 +43,7 @@ handleSubmit(event){
           console.log("*********",result) // response json from the server!
         });
 
-        this.setState({input: ""});       
+        //this.setState({input: ""});       
 } 
 
 
@@ -78,13 +78,13 @@ handleChange(event){
                      </div>
                 </label>
                 <label> Select Campus:</label>
-                       <select name='selectedCampus'>
+                       <select name="selectedCampus">
                        <option >campuses</option>
                        {this.state.campuses && this.state.campuses.map(campus =>{
                            return (<option value={campus.id} key={campus.name}>{campus.name}</option>)
                        })}
                        </select>
-                 <br/>
+                 <br />
                 <input type="submit" value="Submit" />
           </form>
 		);

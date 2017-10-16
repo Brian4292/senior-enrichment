@@ -26,6 +26,22 @@ router.get('/:id', (req, res, next) => {   //refactor to use includes  use .all
     .catch(next);
 });
 
+
+
+// router.get('/:id', (req, res, next) => {   //refactor to use includes  use .all 
+//   const id = req.params.id;
+//   Campus.findById({
+//       include: [
+//         {include: [{all: true}]}
+//       ]
+//   })
+//     .then(Campus => {
+//       console.log(Campus)
+//       res.json(Campus);
+//     })
+//     .catch(next);
+// });
+
 router.post('/', (req, res, next) => {
   Campus.create(req.body)
     .then(createdCampus => {

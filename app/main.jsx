@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
 import { Provider } from 'react-redux';
-import { Link, HashRouter, Route } from 'react-router-dom';
+import { Link, BrowserRouter, Switch, HashRouter, Route } from 'react-router-dom';
 
 
 
@@ -36,7 +36,7 @@ export default class Main extends Component {
 
 
 render(
-	<HashRouter>
+	<BrowserRouter>
 		<div>
 		<Link to={`/students`}>
 		<button>students</button>
@@ -44,12 +44,14 @@ render(
 		<Link to={`/`}>
 		<button>Campus</button>
 		</Link >
-		<Route exact path="/" component={AllCampus} />
-		<Route exact path="/campus/:campusId" component={SingleCampus} />	
-		<Route exact path="/students" component={AllStudents} />
-		<Route exact path='/enroll' component={AddStudent} />
+		<Switch>
+			<Route exact path="/" component={AllCampus} />
+			<Route exact path="/campus/:campusId" component={SingleCampus} />	
+			<Route exact path="/students" component={AllStudents} />
+			<Route exact path='/enroll' component={AddStudent} />
+		</Switch>
 		</div>
-		</HashRouter>
+		</BrowserRouter>
   ,
   document.getElementById('main')
 );

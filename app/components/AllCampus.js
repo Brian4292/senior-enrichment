@@ -32,7 +32,7 @@ export default class AllCampus extends Component {
       <ol>
       {this.state.campuses.length && this.state.campuses.map((campus, idx) => {
         return (
-            <Link key={campus.name} to={`/campus/${campus.id}`}>
+            <Link key={campus.id} to={`/campus/${campus.id}`}>
             	<li >{campus.name}</li>
               <div style={{ backgroundImage: `url(${campus.image})`, height: '512px', width: '512px' }} />
             </Link>

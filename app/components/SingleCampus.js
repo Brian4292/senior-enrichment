@@ -7,17 +7,18 @@ export default class AllCampus extends Component {
 		super();
 		this.state = {
             studentsList: []
-    };
+        };
   }
 
   componentDidMount() {
     const id = this.props.match.params.campusId;
-	axios.get(`api/campus/${id}`)
+    console.log(id);
+	axios.get(`/api/campus/${id}`)
 		.then(response => {		
 			return response.data;
 		})
 		.then(campus => {
-			this.setState({studentsList: campus});
+            this.setState({studentsList: campus});
 		})
 		.catch(err => {
 		    console.error('error');
@@ -26,6 +27,7 @@ export default class AllCampus extends Component {
 	}
 
   render() {	
+      console.log(this.state.studentsList)
     return (
         <div>
         <h1>Campus Student List</h1>

@@ -40,7 +40,7 @@ export default class AllStudents extends Component {
 					<tr key={student.id}>
 						<th>{student.name}</th>
 						<th>{student.campus.name}</th>
-						<th>{student.id}<DeleteStudent delete={student.id} /></th>
+						<th><DeleteStudent delete={student.id} /></th>
 					</tr>
 						);
 			})

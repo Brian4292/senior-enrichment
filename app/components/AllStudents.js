@@ -7,7 +7,7 @@ export default class AllStudents extends Component {
 	constructor() {
 		super();
 		this.state = {
-      		students: []
+    		students: []
     };
   }
 

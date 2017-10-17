@@ -16,7 +16,7 @@ export default class AddStudent extends Component {
   }
 
   componentDidMount() {
-    axios.get('api/campus')
+    axios.get('/api/campus')
         .then(response => {
             return response.data;
         })

@@ -16,7 +16,7 @@ export default class UpdateStudent extends Component {
   }
 
   componentDidMount() {
-    axios.get('api/campus/')
+    axios.get('/api/campus')
         .then(response => {
             return response.data;
         })
@@ -39,7 +39,6 @@ handleSubmit(event){
    if (this.state.selectedCampus) studentForm.campusId = this.state.selectedCampus;
    console.log(studentForm);
         const id = this.props.match.params.studentId;
-        console.log(id, '!!@@ID@##$');
         axios.put(`/api/students/${id}`, studentForm)
         .then(res => res.data)
         .then(result => {

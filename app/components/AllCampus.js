@@ -13,7 +13,7 @@ export default class AllCampus extends Component {
   }
 
   componentDidMount() {
-		axios.get('api/campus')
+		axios.get('api/campus/')
 			.then(response => {
 				console.log(response.data);
 				return response.data;

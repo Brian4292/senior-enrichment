@@ -16,12 +16,12 @@ export default class UpdateStudent extends Component {
   }
 
   componentDidMount() {
-    axios.get('api/campus')
+    axios.get('api/campus/')
         .then(response => {
             return response.data;
         })
         .then(campusList => {
-            console.log(campusList,'sASd33')
+            console.log(campusList, 'sASd33');
             this.setState({campuses: campusList});
         })
         .catch(err => {
@@ -33,17 +33,17 @@ export default class UpdateStudent extends Component {
 handleSubmit(event){
    event.preventDefault();
    const studentForm = {};
-   if (this.state.studentName) studentForm['name'] = this.state.studentName;
-   if (this.state.studentEmail) studentForm['email'] = this.state.studentEmail;
-   if (this.state.studentAccount) studentForm['github'] = this.state.studentAccount;
-   if (this.state.selectedCampus) studentForm['campusId'] = this.state.selectedCampus;
-   console.log(studentForm)
+   if (this.state.studentName) studentForm.name = this.state.studentName;
+   if (this.state.studentEmail) studentForm.email = this.state.studentEmail;
+   if (this.state.studentAccount) studentForm.github = this.state.studentAccount;
+   if (this.state.selectedCampus) studentForm.campusId = this.state.selectedCampus;
+   console.log(studentForm);
         const id = this.props.match.params.studentId;
-        console.log(id,'!!@@ID@##$')
+        console.log(id, '!!@@ID@##$');
         axios.put(`/api/students/${id}`, studentForm)
         .then(res => res.data)
         .then(result => {
-          console.log("*********",result) // response json from the server!
+          console.log('*********', result); // response json from the server!
        });
 
         //this.setState({input: ""});       
@@ -79,8 +79,8 @@ render() {
                <label> Select Campus:</label>
                       <select name="selectedCampus">
                       <option >campuses</option>
-                      {this.state.campuses.length && this.state.campuses.map(campus =>{
-                          return (<option value={campus.id} key={campus.name}>{campus.name}</option>)
+                      {this.state.campuses.length && this.state.campuses.map(campus => {
+                          return (<option value={campus.id} key={campus.name}>{campus.name}</option>);
                       })}
                       </select>
                 <br />

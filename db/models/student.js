@@ -15,10 +15,14 @@ const Student = db.define('student',{
 		type: Sequelize.STRING,
 		allowNull: true
 	},
-	// GPA: {
-	// 	type: Sequelize.DECIMAL,
-	// 	allowNull: false
-	// }
+	image: {
+		type: Sequelize.TEXT,
+		allowNull: false
+	},
+	content: {
+		type: Sequelize.TEXT,
+		allowNull: true
+	}
 });
 
 module.exports =  Student;

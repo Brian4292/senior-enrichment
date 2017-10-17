@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha **/*.test.js *.test.js",
+    "seed": "node seed",
     "build": "webpack",
     "build-watch": "webpack -w",
     "start": "nodemon server/start.js & webpack -w"

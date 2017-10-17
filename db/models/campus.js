@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const db = require('../');
-const Faker = require('faker');
 
 const Campus = db.define('campus', {
 	name: {
@@ -9,8 +8,12 @@ const Campus = db.define('campus', {
 	},
 	image: {
 		type: Sequelize.STRING,
-		allowNull:false
-		}
+		allowNull: false
+		},
+	content: {
+		type: Sequelize.TEXT,
+		allowNull: true
+	}
 });
 
 module.exports =   Campus;

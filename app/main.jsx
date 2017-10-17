@@ -33,3 +33,10 @@ render(
   <Main />,
   document.getElementById('main')
 );
+
+//make funny 404
+// add campus
+// edit student
+// edit campus 
+//single student Page 
+// make everything clickable

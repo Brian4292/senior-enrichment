@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import DeleteStudent from './DeleteStudent';
-import AllStudent from './AddStudent';
 import { Link } from 'react-router-dom';
 
 export default class AllStudents extends Component {
@@ -38,8 +37,8 @@ export default class AllStudents extends Component {
 
 				return (
 					<tr key={student.id}>
-						<th>{student.name}</th>
-						<th>{student.campus.name}</th>
+					<Link to={'/enroll'}><th>{student.name}</th></Link>
+						<Link to={`/campus/${student.campus.id}`}><th>{student.campus.name}</th></Link>
 						<th><DeleteStudent delete={student.id} /></th>
 					</tr>
 						);

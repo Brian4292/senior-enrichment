@@ -56,7 +56,7 @@ handleChange(event){
 }
 
   render() {
-      console.log(this.state)
+     // console.log(this.state)
 		return (
             <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
                 <label> Name:
@@ -77,7 +77,7 @@ handleChange(event){
                 <label> Select Campus:</label>
                        <select name="selectedCampus">
                        <option >campuses</option>
-                       {this.state.campuses && this.state.campuses.map(campus =>{
+                       {this.state.campuses.length && this.state.campuses.map(campus =>{
                            return (<option value={campus.id} key={campus.name}>{campus.name}</option>)
                        })}
                        </select>

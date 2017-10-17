@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import DeleteStudent from './DeleteStudent';
+import UpdateStudent from './Students/UpdateStudent';
 import { Link } from 'react-router-dom';
 
 export default class SingleStudent extends Component {
@@ -13,7 +13,6 @@ export default class SingleStudent extends Component {
 
   componentDidMount() {
         const id = this.props.match.params.studentId;
-        console.log(id,'s@###')
 		axios.get(`/api/students/${id}`)
 			.then(response => {
 				return response.data;
@@ -32,8 +31,10 @@ export default class SingleStudent extends Component {
       // fix back route to include all and grab the student
       // campus, add fake content, and profile picture
 	return (
-		<div>
+        <div>
+        <Link to={`/edit/${this.state.student.id}`}> <button>Edit</button> </Link>
             {this.state.student.name}
+            Make a link to campus and add picture for the student and add random content
 		</div>
 	);
 }

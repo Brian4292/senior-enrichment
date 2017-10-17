@@ -26,7 +26,7 @@ export default class AllCampus extends Component {
 			});
 	}
 
-  render() {	
+  render() {
       console.log(this.state.studentsList)
     return (
         <div>

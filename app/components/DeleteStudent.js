@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import { Link, BrowserRouter, Switch, Route } from 'react-router-dom';
+//import { Link } from 'react-router-dom'; use history to redirect after promise resolve
 
 
 export default class DeleteStudent extends Component {
@@ -20,10 +20,9 @@ export default class DeleteStudent extends Component {
         });      
     }
     render() {
+        console.log(this.props.history)
 		return (
-            <Link to={'/students'}>
-            <button onClick={this.deleteStudent}>Expel</button> 
-            </Link>        
+            <button onClick={this.deleteStudent}>Expel</button>   
 		);
 
 	}

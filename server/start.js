@@ -1,16 +1,14 @@
 'use strict'
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const {resolve} = require('path')
-const Faker = require('faker');
-const Student = require('../db/models').Student;
+const express = require('express');
+const bodyParser = require('body-parser');
+const {resolve} = require('path');
 
-const app = express()
+const app = express();
 
 if (process.env.NODE_ENV !== 'production') {
   // Logging middleware (non-production only)
-  app.use(require('volleyball'))
+  app.use(require('volleyball'));
 }  
 
 //The code below works because `.use` returns `this` which is `app`. So what we want to return in the `module.exports` is `app`, and we can chain on that declaration because each method invokation returns `app` after mutating based on the middleware functions
@@ -36,22 +34,13 @@ if (module === require.main) {
           ~ To help compare these objects, reference each of their `id` attributes
   */
 
-  const PORT = 1337
+  const PORT = 1337;
 
-  const db = require('../db')
-  const Student = require('../db').Student;
-  db.sync({force:false})
+  const db = require('../db');
+  db.sync()
   .then(() => {
-    console.log('db synced')
+    console.log('db synced');
     app.listen(PORT, () => console.log(`server listening on port ${PORT}`))
-    
   });
 }
 
-// for(let i =0;i<20;i++){     //figure out how to use a seed file
-// 	Student.create({   
-// 	name: Faker.name.findName(),
-// 	email :Faker.internet.email(),
-// 	github: Faker.internet.userName(),
-//   })
-//   }

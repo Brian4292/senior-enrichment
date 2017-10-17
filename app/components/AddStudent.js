@@ -33,8 +33,8 @@ handleSubmit(event){
    event.preventDefault();
    const studentForm = {
         name: this.state.studentName,
-        email: this.state.studentEmail, 
-        github: this.state.studentAccount, 
+        email: this.state.studentEmail,
+        github: this.state.studentAccount,
         campusId: this.state.selectedCampus
         }
         axios.post('/api/students', studentForm)
@@ -44,9 +44,7 @@ handleSubmit(event){
         });
 
         //this.setState({input: ""});       
-} 
-
-
+}
 
 handleChange(event){
     const value = event.target.value;
@@ -55,7 +53,6 @@ handleChange(event){
     this.setState({
       [name]: value
     });
-    console.log(this.state)
 }
 
   render() {

@@ -1,57 +1,35 @@
 'use strict';
-import React, {Component} from 'react';
+import React from 'react';
 import {render} from 'react-dom';
-import { Provider } from 'react-redux';
-import { Link, BrowserRouter, Switch, HashRouter, Route } from 'react-router-dom';
-
-
-
-//import store from './store';
-//import Root from './components/Root';
-//import axios from 'axios';
+import { Link, BrowserRouter, Switch, Route } from 'react-router-dom';
 import AllStudents from './components/AllStudents';
 import AllCampus from './components/AllCampus';
 import SingleCampus from './components/SingleCampus';
 import AddStudent from './components/AddStudent';
 
-export default class Main extends Component {
-	constructor() {
-		super();
-		this.state = {
-      students: []
-    };
-  }
-
-  render() {
+function Main () {
 		return (
-      <ol>
-      {this.state.students.length && this.state.students.map((student) => {
-        return (<li key={student}>{student.name}</li>);
-      })}
-			</ol>
+			<BrowserRouter>
+			<div>
+			<Link to={`/students`}>
+			<button>students</button>
+			</Link >
+			<Link to={`/`}>
+			<button>Campus</button>
+			</Link >
+			<Switch>
+				<Route exact path="/" component={AllCampus} />
+				<Route exact path="/campus/:campusId" component={SingleCampus} />
+				<Route exact path="/students" component={AllStudents} />
+				<Route exact path="/enroll" component={AddStudent} />
+			</Switch>
+			</div>
+			</BrowserRouter>
 		);
-
-	}
 }
 
 
 render(
-	<BrowserRouter>
-		<div>
-		<Link to={`/students`}>
-		<button>students</button>
-		</Link >
-		<Link to={`/`}>
-		<button>Campus</button>
-		</Link >
-		<Switch>
-			<Route exact path="/" component={AllCampus} />
-			<Route exact path="/campus/:campusId" component={SingleCampus} />	
-			<Route exact path="/students" component={AllStudents} />
-			<Route exact path='/enroll' component={AddStudent} />
-		</Switch>
-		</div>
-		</BrowserRouter>
-  ,
+  <Main />,
   document.getElementById('main')
 );

@@ -30,7 +30,7 @@ export default class AllCampus extends Component {
   render() {
     return (
       <ol>
-      {this.state.campuses.length && this.state.campuses.map((campus, idx) => {
+      {this.state.campuses.length && this.state.campuses.map((campus) => {
         return (
             <Link key={campus.id} to={`/campus/${campus.id}`}>
             	<li >{campus.name}</li>

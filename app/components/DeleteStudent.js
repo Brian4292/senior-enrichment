@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { Link, BrowserRouter, Switch, Route } from 'react-router-dom';
+
 
 export default class DeleteStudent extends Component {
 	constructor(props) {
@@ -19,7 +21,9 @@ export default class DeleteStudent extends Component {
     }
     render() {
 		return (
-            <button onClick={this.deleteStudent}>Expel</button>         
+            <Link to={'/students'}>
+            <button onClick={this.deleteStudent}>Expel</button> 
+            </Link>        
 		);
 
 	}

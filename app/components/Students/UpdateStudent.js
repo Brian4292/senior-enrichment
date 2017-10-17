@@ -21,7 +21,6 @@ export default class UpdateStudent extends Component {
             return response.data;
         })
         .then(campusList => {
-            console.log(campusList, 'sASd33');
             this.setState({campuses: campusList});
         })
         .catch(err => {

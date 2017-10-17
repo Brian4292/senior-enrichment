@@ -22,7 +22,7 @@ function Main () {
 			<Switch>
 			<Route exact path="/campus/:campusId" component={SingleCampus} />
 			<Route exact path="/students" component={AllStudents} />
-			<Route exact path="/edit/" component={UpdateStudent} />
+			<Route exact path="/edit/:studentId" component={UpdateStudent} />
 			<Route exact path="/enroll" component={AddStudent} />
 			<Route exact path="/students/:studentId" component={SingleStudent} />
 			<Route exact path="/" component={AllCampus} />

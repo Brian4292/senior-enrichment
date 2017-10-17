@@ -6,6 +6,7 @@ import AllStudents from './components/AllStudents';
 import AllCampus from './components/AllCampus';
 import SingleCampus from './components/SingleCampus';
 import AddStudent from './components/AddStudent';
+import SingleStudent from './components/SingleStudent';
 
 function Main () {
 		return (
@@ -22,6 +23,7 @@ function Main () {
 				<Route exact path="/campus/:campusId" component={SingleCampus} />
 				<Route exact path="/students" component={AllStudents} />
 				<Route exact path="/enroll" component={AddStudent} />
+				<Route exact path="/students/:studentId" component={SingleStudent} />
 			</Switch>
 			</div>
 			</BrowserRouter>

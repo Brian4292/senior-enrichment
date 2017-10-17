@@ -37,7 +37,7 @@ export default class AllStudents extends Component {
 
 				return (
 					<tr key={student.id}>
-					<Link to={'/enroll'}><th>{student.name}</th></Link>
+					<Link to={`/students/${student.id}`}><th>{student.name}</th></Link>
 						<Link to={`/campus/${student.campus.id}`}><th>{student.campus.name}</th></Link>
 						<th><DeleteStudent delete={student.id} /></th>
 					</tr>

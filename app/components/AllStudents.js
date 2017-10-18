@@ -12,6 +12,7 @@ export default class AllStudents extends Component {
   }
 
   componentDidMount() {
+    console.log('helelelfselgslglse')
     axios
       .get('api/students')
       .then(response => {

@@ -6,7 +6,7 @@ const Student = require('./student');
 const Campus = require('./campus');
 
 Student.belongsTo(Campus);
-
+Campus.hasMany(Student);
   
 // for(let i =0;i<100;i++){     //figure out how to use a seed file
 // 	Student.create({   

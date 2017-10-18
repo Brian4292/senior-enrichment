@@ -43,7 +43,7 @@ render(<Main />, document.getElementById('main'));
 //make funny 404
 // add campus done
 // edit student done
-// edit campus
+// edit campus done
 //single student Page
 // make everything clickable
 // make nice looking nav bar and footer static mostly

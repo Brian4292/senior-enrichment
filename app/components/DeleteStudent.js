@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-//import { Link } from 'react-router-dom'; use history to redirect after promise resolve
+import { withRouter } from 'react-router-dom'; //use history to redirect after promise resolve
 
 
-export default class DeleteStudent extends Component {
+class DeleteStudent extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -14,16 +14,23 @@ export default class DeleteStudent extends Component {
  deleteStudent(){
      const id = this.state.studentToDelete;
         axios.delete(`api/students/${id}`)
-        .catch(err => {
-            console.error('error');
-            console.error(err);
-        });      
+        .then(response => {
+            return response.data;
+          })
+        // .catch(err => {
+        //     console.error('error');
+        //     console.error(err);
+        // })
+        .then(() => {
+          this.props.history.push('/students');
+        });
     }
     render() {
-        console.log(this.props.history)
 		return (
             <button onClick={this.deleteStudent}>Expel</button>
 		);
 
 	}
 }
+
+export default withRouter(DeleteStudent);

@@ -13,18 +13,19 @@ router.get('/', (req, res, next) => {
     .catch(next);
 });
 
-router.get('/:id', (req, res, next) => {   //refactor to use includes  use .all 
+router.get('/:id', (req, res, next) => {
   const id = req.params.id;
-  Student.findAll({
-      where:{
-        campusId:id
-      }
-  })
-    .then(Campus => {
-      res.json(Campus);
-    })
-    .catch(next);
-});
+	Campus.findOne({
+		include: [{model: Student}],
+		where: {
+			id: id
+		}
+	})
+	.then(campus => {
+		res.json(campus)
+	})
+	.catch(next)
+})
 
 
 
@@ -53,7 +54,7 @@ router.post('/', (req, res, next) => {
 router.put('/:id', (req, res, next) => {
   const id = req.params.id;
   Campus.findById(id)
-  .then(campustoUpdate=>{
+  .then(campustoUpdate => { 
     campustoUpdate.update(req.body)
   })
     .then(updatedCampus => {

@@ -30,6 +30,7 @@ export default class AllCampus extends Component {
   render() {
     return (
       <ol>
+				<Link to={'/addcampus'}>Add Campus</Link>
       {this.state.campuses.length && this.state.campuses.map((campus) => {
         return (
             <Link key={campus.id} to={`/campus/${campus.id}`}>

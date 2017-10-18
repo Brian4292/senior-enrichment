@@ -26,3 +26,4 @@ const Student = db.define('student',{
 });
 
 module.exports =  Student;
+// make before create to add stuff before sumbit

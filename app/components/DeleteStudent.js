@@ -22,7 +22,7 @@ export default class DeleteStudent extends Component {
     render() {
         console.log(this.props.history)
 		return (
-            <button onClick={this.deleteStudent}>Expel</button>   
+            <button onClick={this.deleteStudent}>Expel</button>
 		);
 
 	}

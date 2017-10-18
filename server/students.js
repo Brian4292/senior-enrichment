@@ -1,15 +1,7 @@
 const express = require('express');
 const router = express.Router();
 module.exports = router;
-Student = require('../db/models').Student;
-
-// router.get('/', (req, res, next) => {
-//   Student.findAll()
-//     .then(students => {
-//       res.json(students);
-//     })
-//     .catch(next);
-// });
+const Student = require('../db/models').Student;
 
 router.get('/', (req, res, next) => {
   Student.findAll({ include: [{ all: true }] })

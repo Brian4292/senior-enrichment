@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 module.exports = router;
-Campus = require('../db/models/').Campus;
-Student = require('../db/models').Student;
+const Campus = require('../db/models/').Campus;
+const Student = require('../db/models').Student;
 
 
 router.get('/', (req, res, next) => {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import UpdateStudent from './Students/UpdateStudent';
 import { Link } from 'react-router-dom';
 
 export default class SingleStudent extends Component {

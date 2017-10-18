@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Link, BrowserRouter, Switch, Route } from 'react-router-dom';
 import AllStudents from './components/AllStudents';
-import AllCampus from './components/AllCampus';
+import AllCampus from './components/Campus/AllCampus';
 import SingleCampus from './components/SingleCampus';
 import AddStudent from './components/AddStudent';
 import SingleStudent from './components/SingleStudent';

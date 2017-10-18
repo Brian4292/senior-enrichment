@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
-export default class AddCampus extends Component {
+class updateCampus extends Component {
   constructor() {
     super();
     this.state = {
@@ -27,7 +28,10 @@ export default class AddCampus extends Component {
       .then(res => res.data)
       .then(result => {
         console.log('*********', result); // response json from the server!
-      });
+      })
+      .then(()=>{
+        this.props.history.push('/')
+      })
 
     //this.setState({input: ""});
   }
@@ -69,3 +73,5 @@ export default class AddCampus extends Component {
     );
   }
 }
+
+export default withRouter(updateCampus)

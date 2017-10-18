@@ -17,7 +17,7 @@ const Student = db.define('student',{
 	},
 	image: {
 		type: Sequelize.TEXT,
-		allowNull: false
+		allowNull: true
 	},
 	content: {
 		type: Sequelize.TEXT,

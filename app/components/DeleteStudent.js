@@ -17,13 +17,17 @@ class DeleteStudent extends Component {
         .then(response => {
             return response.data;
           })
-        // .catch(err => {
-        //     console.error('error');
-        //     console.error(err);
-        // })
+        .catch(err => {
+            console.error('error');
+            console.error(err);
+        })
         .then(() => {
-          this.props.history.push('/students');
-        });
+          this.props.history.push('/');
+        })
+          // .then 
+          // (() => {
+        //   this.props.history.push('/students'); //hack code
+        // });
     }
     render() {
 		return (

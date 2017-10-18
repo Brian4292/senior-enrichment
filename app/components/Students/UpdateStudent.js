@@ -43,9 +43,9 @@ export default class UpdateStudent extends Component {
       .then(res => res.data)
       .then(result => {
         console.log('*********', result); // response json from the server!
+      }).then (() => {
+        this.props.history.push('/students');
       });
-
-    //this.setState({input: ""}); //clear form
   }
 
   handleChange(event) {
@@ -57,7 +57,6 @@ export default class UpdateStudent extends Component {
   }
 
   render() {
-    // console.log(this.state)
     return (
       <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
         <label>

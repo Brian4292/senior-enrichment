@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 module.exports = router;
 const Student = require('../db/models').Student;
+const Campus = require('../db/models/').Campus;
+
 
 router.get('/', (req, res, next) => {
   Student.findAll({ include: [{ all: true }] })
@@ -11,14 +13,28 @@ router.get('/', (req, res, next) => {
     .catch(next);
 });
 
+// router.get('/:id', (req, res, next) => {
+//   const id = req.params.id;
+//   Student.findById(id)
+//     .then(student => {
+//       res.json(student);
+//     })
+//     .catch(next);
+// });
+
 router.get('/:id', (req, res, next) => {
   const id = req.params.id;
-  Student.findById(id)
-    .then(student => {
-      res.json(student);
-    })
-    .catch(next);
-});
+	Student.findOne({
+		include: [{model: Campus}],
+		where: {
+			id: id
+		}
+	})
+	.then(foundStudent => {
+		res.json(foundStudent)
+	})
+	.catch(next)
+})
 
 router.post('/', (req, res, next) => {
   Student.create(req.body)

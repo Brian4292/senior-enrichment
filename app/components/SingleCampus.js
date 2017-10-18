@@ -39,7 +39,7 @@ export default class AllCampus extends Component {
           height: "512px",
           width: "512px"
         }}/> */}
-        <img src="./img/Campus1"/>
+        <img src="./img/Campus1.png" alt="image"/>
         <h1>{this.state.selectedCapmus.name}'s Student List</h1>
         {
 

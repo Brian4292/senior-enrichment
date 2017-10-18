@@ -6,7 +6,8 @@ export default class SingleStudent extends Component {
 	constructor() {
 		super();
 		this.state = {
-      		student: {}
+			student: {},
+			campus: {}
     };
   }
 
@@ -17,8 +18,8 @@ export default class SingleStudent extends Component {
 				return response.data;
 			})
 			.then(foundStudent => {
-                console.log(foundStudent)
 				this.setState({student: foundStudent});
+				this.setState({campus:foundStudent.campus})
 			})
 			.catch(err => {
 				console.error('error');
@@ -28,12 +29,15 @@ export default class SingleStudent extends Component {
 
   render() {
       // fix back route to include all and grab the student
-      // campus, add fake content, and profile picture
+	  // campus, add fake content, and profile picture
+	  const campus = this.state.campus;
+	  const student = this.state.student;
 	return (
         <div>
         <Link to={`/edit/${this.state.student.id}`}> <button>Edit</button> </Link>
-            {this.state.student.name}
-            Make a link to campus and add picture for the student and add random content
+			<h1>{student.name}</h1>
+			<img src={student.image} alt=""/>
+			<article>{`${student.name} is part of the`} <Link to={`/campus/${campus.id}`}>{campus.name}</Link> Campus. {student.content}</article>
 		</div>
 	);
 }

@@ -29,6 +29,7 @@ export default class AllCampus extends Component {
   }
 
   render() {
+    console.log(this.state.selectedCampus.image)
     return (
       <ol>
         <Link to={"/addcampus"}>Add Campus</Link>

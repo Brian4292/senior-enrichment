@@ -12,13 +12,12 @@ Student = require('../db/models').Student;
 // });
 
 router.get('/', (req, res, next) => {
-  Student.findAll({include: [{all: true}]})
+  Student.findAll({ include: [{ all: true }] })
     .then(students => {
       res.json(students);
     })
     .catch(next);
 });
-
 
 router.get('/:id', (req, res, next) => {
   const id = req.params.id;
@@ -39,10 +38,10 @@ router.post('/', (req, res, next) => {
 
 router.put('/:id', (req, res, next) => {
   const id = req.params.id;
-  Student.findById(+id)
-  .then(studentToupdate=>{
-  studentToupdate.update(req.body)
-  })
+  Student.findById(id)
+    .then(studentToupdate => {
+      studentToupdate.update(req.body);
+    })
     .then(updatedStudent => {
       res.json(updatedStudent);
     })

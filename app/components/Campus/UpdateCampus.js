@@ -1,53 +1,41 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export default class UpdateCampus extends Component {
+export default class AddCampus extends Component {
   constructor() {
     super();
     this.state = {
-      currentCampus: {},
       campusName: '',
+      campusImage: '',
+      campusContent: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount() {
-    axios
-      .get('/api/campus')
-      .then(response => {
-        return response.data;
-      })
-      .then(campusList => {
-        this.setState({ campuses: campusList });
-      })
-      .catch(err => {
-        console.error('error');
-        console.error(err);
-      });
-  }
-
   handleSubmit(event) {
     event.preventDefault();
-    const studentForm = {};
-    if (this.state.studentName) studentForm.name = this.state.studentName; 
-    if (this.state.studentEmail) studentForm.email = this.state.studentEmail;
-    if (this.state.studentAccount) studentForm.github = this.state.studentAccount;
-    if (this.state.selectedCampus) studentForm.campusId = this.state.selectedCampus;
-    const id = this.props.match.params.studentId;
+    const updateCampus = {
+      name: this.state.campusName,
+      image: this.state.campusImage,
+      content: this.state.campusContent,
+    };
+    const id = this.props.match.params.campusId;
+    console.log(id)
     axios
-      .put(`/api/students/${id}`, studentForm)
+      .put(`/api/campus/${id}`, updateCampus)
       .then(res => res.data)
       .then(result => {
         console.log('*********', result); // response json from the server!
       });
 
-    //this.setState({input: ""}); //clear form
+    //this.setState({input: ""});
   }
 
   handleChange(event) {
     const value = event.target.value;
     const name = event.target.name;
+
     this.setState({
       [name]: value
     });
@@ -58,37 +46,23 @@ export default class UpdateCampus extends Component {
     return (
       <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
         <label>
-          Name:
+        Edit Campus Name:
           <div>
-            <input type="text" name="studentName" />
+            <input type="text" name="campusName" />
           </div>
         </label>
         <label>
-          Email:
+        Image Url (if None Selected You will recieve a random Image):
           <div>
-            <input type="text" name="studentEmail" />
+            <input type="text" name="campusImage" />
           </div>
         </label>
-        Github Account:
+        Content(short bio about the class):
         <label>
           <div>
-            <input type="text" name="studentAccount" />
+            <textarea type="text" name="campusContent" />
           </div>
         </label>
-        <label> Select Campus:</label>
-        <select name="selectedCampus">
-          <option selected="true" disabled="disabled">
-            Campus
-          </option>
-          {this.state.campuses.length &&
-            this.state.campuses.map(campus => {
-              return (
-                <option value={campus.id} key={campus.name}>
-                  {campus.name}
-                </option>
-              );
-            })}
-        </select>
         <br />
         <input type="submit" value="Submit" />
       </form>

@@ -26,7 +26,7 @@ function Main() {
           <Route exact path="/campus/:campusId" component={SingleCampus} />
           <Route exact path="/students" component={AllStudents} />
           <Route exact path="/edit/:studentId" component={UpdateStudent} />
-		      <Route exact path="/edit/:campusId" component={UpdateCampus} />
+		      <Route exact path="/campusedit/:campusId" component={UpdateCampus} />
           <Route exact path="/enroll" component={AddStudent} />
           <Route exact path="/addcampus" component={AddCampus} />
           <Route exact path="/students/:studentId" component={SingleStudent} />

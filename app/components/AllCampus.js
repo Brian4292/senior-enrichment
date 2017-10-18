@@ -34,6 +34,8 @@ export default class AllCampus extends Component {
       {this.state.campuses.length && this.state.campuses.map((campus) => {
         return (
             <Link key={campus.id} to={`/campus/${campus.id}`}>
+						<br/>
+						<Link to={`/campusedit/${campus.id}`}>Edit</Link> 
             	<li >{campus.name}</li>
               <div style={{ backgroundImage: `url(${campus.image})`, height: '512px', width: '512px' }} />
             </Link>

@@ -50,8 +50,12 @@ router.post('/', (req, res, next) => {
     .catch(next);
 });
 
-router.put('/', (req, res, next) => {
-  Campus.update(req.body)
+router.put('/:id', (req, res, next) => {
+  const id = req.params.id;
+  Campus.findById(id)
+  .then(campustoUpdate=>{
+    campustoUpdate.update(req.body)
+  })
     .then(updatedCampus => {
       res.json(updatedCampus);
     })

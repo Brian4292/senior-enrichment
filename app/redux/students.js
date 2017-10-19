@@ -4,7 +4,7 @@ import axios from 'axios';
 const GET_STU = 'GET_STU';  
 const CREATE_STU = 'CREATE_STU';
 const DELETE_STU = 'DELETE_STU';
-const SINGLE_STU = 'SINGLE_STU';
+//const SINGLE_STU = 'SINGLE_STU';
 const UPDATE_STU = 'UPDATE_STU';
 
 //ACTION CREATORS
@@ -18,6 +18,8 @@ switch (action.type) {
     return action.students;
     // case SINGLE_STU:  should i put logic here
     // return action.students;
+    case CREATE_STU:
+    return [action.students, ...students]
     case DELETE_STU:
     return students.filter(student => student.id !== action.id);
     default:
@@ -58,3 +60,7 @@ export const removeStudent = id => dispatch =>{
     //   this.props.history.push('/students'); use later
     });
 };
+
+export const addStudent = student => dispatch =>{
+    
+}

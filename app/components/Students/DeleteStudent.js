@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import { withRouter } from 'react-router-dom'; //use history to redirect after promise resolve
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import {removeStudent} from '../../redux/students';
-
 
 class DeleteStudent extends Component {
 	constructor(props) {
@@ -23,9 +22,7 @@ class DeleteStudent extends Component {
   }
 }
 
-
-
-
 const mapState = ({ students }) => ({ students });
 const mapDispatch = { removeStudent };
 export default connect(mapState, mapDispatch)(DeleteStudent);
+

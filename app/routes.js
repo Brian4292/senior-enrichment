@@ -13,6 +13,7 @@ import AddCampus from './components/Campus/AddCampus';
 import NavBar from './components/NavBar';
 import { fetchStudents } from './redux/students';
 import { connect } from 'react-redux';
+import { fetchCampuses } from './redux/campus';
 
 class Routes extends Component {
   componentDidMount () {
@@ -53,7 +54,7 @@ const mapProps = null;
 const mapDispatchtoProps = dispatch => ({
   initialData : () => {
     dispatch(fetchStudents());
-    //campus
+    dispatch(fetchCampuses());
   }
 });
 

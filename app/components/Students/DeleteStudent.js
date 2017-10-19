@@ -1,40 +1,31 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import { withRouter } from 'react-router-dom'; //use history to redirect after promise resolve
+import { connect } from "react-redux";
+import {removeStudent} from '../../redux/students';
 
 
 class DeleteStudent extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-            studentToDelete: props.delete
-    };
     this.deleteStudent = this.deleteStudent.bind(this);
   }
- deleteStudent(){
-     const id = this.state.studentToDelete;
-        axios.delete(`api/students/${id}`)
-        .then(response => {
-            return response.data;
-          })
-        .catch(err => {
-            console.error('error');
-            console.error(err);
-        })
-        .then(() => {
-          this.props.history.push('/');
-        })
-          // .then 
-          // (() => {
-        //   this.props.history.push('/students'); //hack code
-        // });
-    }
-    render() {
+ 
+  render() {
+    console.log(this.props)
 		return (
             <button onClick={this.deleteStudent}>Expel</button>
 		);
 
-	}
+  }
+  deleteStudent(){
+    const id = this.props.delete;
+    this.props.removeStudent(id);
+  }
 }
 
-export default withRouter(DeleteStudent);
+
+
+
+const mapState = ({ students }) => ({ students });
+const mapDispatch = { removeStudent };
+export default connect(mapState, mapDispatch)(DeleteStudent);

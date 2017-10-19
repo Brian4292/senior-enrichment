@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-class SingleStudent extends Component {
-	render() {
-		const id = this.props.match.params.studentId;
-		const studentFound = this.props.students.filter(student=>{
+function SingleStudent (props){
+	 
+		 console.log(props)
+		const id = props.match.params.studentId;
+		const studentFound = props.students.filter(student => {
 			return student.id == id;
 		})[0]
-		console.log(this.props.students,'students~~~~')
 		return (
    <div>
 	<Link to={`/edit/${studentFound.id}`}>
@@ -24,7 +24,6 @@ class SingleStudent extends Component {
 	</article>
   </div> 
 		)
-  }
 }
 
 const mapState = ({ students }) => ({ students });

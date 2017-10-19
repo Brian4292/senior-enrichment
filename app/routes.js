@@ -24,6 +24,10 @@ class Routes extends Component {
         <NavBar />
         <div id="content">
           <Switch>
+          <Route
+              path="/students/:studentId"
+              component={SingleStudent}
+            />
             <Route exact path="/campus/:campusId" component={SingleCampus} />
             <Route exact path="/students" component={AllStudents} />
             <Route exact path="/edit/:studentId" component={UpdateStudent} />
@@ -34,11 +38,7 @@ class Routes extends Component {
             />
             <Route exact path="/enroll" component={AddStudent} />
             <Route exact path="/addcampus" component={AddCampus} />
-            <Route
-              exact
-              path="/students/:studentId"
-              component={SingleStudent}
-            />
+
             <Route exact path="/" component={AllCampus} />
             <Route component={Root} /> {/*404 Page for the lulz*/}
           </Switch>

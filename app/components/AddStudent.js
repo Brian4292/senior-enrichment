@@ -30,7 +30,6 @@ class AddStudent extends Component {
         console.error(err);
       });
   }
-
   handleSubmit(event) {
     event.preventDefault();
     const studentForm = {

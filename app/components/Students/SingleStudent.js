@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 function SingleStudent (props){
-	 
-		 console.log(props)
 		const id = props.match.params.studentId;
-		const studentFound = props.students.filter(student => {
+		const studentFound = props.students.filter(student =>{
 			return student.id == id;
 		})[0]
 		return (

@@ -1,13 +1,13 @@
-import axios from "axios";
+import axios from 'axios';
 
-const GET_CAMPUS = "GET_CAMPUS";
-const CREATE_CAMPUS = "CREATE_CAMPUS";
-const DELETE_CAMPUS = "DELETE_CAMPUS";
-const UPDATE_CAMPUS = "UPDATE_CAMPUS";
+const GET_CAMPUS = 'GET_CAMPUS';
+const CREATE_CAMPUS = 'CREATE_CAMPUS';
+const DELETE_CAMPUS = 'DELETE_CAMPUS';
+const UPDATE_CAMPUS = 'UPDATE_CAMPUS';
 
 const getCampus = campuses => ({ type: GET_CAMPUS, campuses });
-const createCampus = campus => ({ type: GET, campus });
-const deleteCampus = id => ({ type: DELETE_STU, id });
+const createCampus = campus => ({ type: CREATE_CAMPUS, campus });
+const deleteCampus = id => ({ type: DELETE_CAMPUS, id });
 
 export default function reducer(campuses = [], action) {
   switch (action.type) {

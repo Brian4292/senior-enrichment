@@ -9,17 +9,17 @@ class DeleteStudent extends Component {
     this.deleteStudent = this.deleteStudent.bind(this);
   }
  
+  deleteStudent(){
+    const id = this.props.delete;
+    this.props.removeStudent(id);
+  }
   render() {
-    console.log(this.props)
 		return (
             <button onClick={this.deleteStudent}>Expel</button>
 		);
 
   }
-  deleteStudent(){
-    const id = this.props.delete;
-    this.props.removeStudent(id);
-  }
+
 }
 
 const mapState = ({ students }) => ({ students });

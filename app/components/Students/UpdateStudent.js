@@ -1,45 +1,28 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import {updateCurrentStudent} from './../../redux/students';
 
-export default class UpdateStudent extends Component {
+class UpdateStudent extends Component {
   constructor() {
     super();
     this.state = {
-      campuses: [],
-      studentName: '',
-      studentEmail: '',
-      studentAccount: '',
-      selectedCampus: ''
+      name: '',
+      email: '',
+      //image
+      //content
+      github: '',
+      campusId: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount() {
-    axios
-      .get('/api/campus')
-      .then(response => {
-        return response.data;
-      })
-      .then(campusList => {
-        this.setState({ campuses: campusList });
-      })
-      .catch(err => {
-        console.error('error');
-        console.error(err);
-      });
-  }
-
   handleSubmit(event) {
     event.preventDefault();
-    const studentForm = {};
-    if (this.state.studentName) studentForm.name = this.state.studentName; 
-    if (this.state.studentEmail) studentForm.email = this.state.studentEmail;
-    if (this.state.studentAccount) studentForm.github = this.state.studentAccount;
-    if (this.state.selectedCampus) studentForm.campusId = this.state.selectedCampus;
     const id = this.props.match.params.studentId;
     axios
-      .put(`/api/students/${id}`, studentForm)
+      .put(`/api/students/${id}`, this.state)
       .then(res => res.data)
       .then(result => {
         console.log('*********', result); // response json from the server!
@@ -62,23 +45,23 @@ export default class UpdateStudent extends Component {
         <label>
           Name:
           <div>
-            <input type="text" name="studentName" />
+            <input type="text" name="name" />
           </div>
         </label>
         <label>
           Email:
           <div>
-            <input type="text" name="studentEmail" />
+            <input type="text" name="email" />
           </div>
         </label>
         Github Account:
         <label>
           <div>
-            <input type="text" name="studentAccount" />
+            <input type="text" name="github" />
           </div>
         </label>
         <label> Select Campus:</label>
-        <select name="selectedCampus">
+        <select name="campusId">
           <option selected="true" disabled="disabled">
             Campus
           </option>
@@ -97,3 +80,9 @@ export default class UpdateStudent extends Component {
     );
   }
 }
+
+
+
+const mapState = ({ students, campuses }) => ({ students, campuses });
+const mapDispatch = { updateCurrentStudent };
+export default connect(mapState, mapDispatch)(UpdateStudent);

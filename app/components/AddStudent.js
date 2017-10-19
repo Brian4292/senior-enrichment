@@ -53,14 +53,14 @@ class AddStudent extends Component {
   handleChange(event) {
     const value = event.target.value;
     const name = event.target.name;
-
+console.log(event.target)
     this.setState({
       [name]: value
     });
   }
 
   render() {
-    // console.log(this.state)
+    console.log(this.state)
     return (
       <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
         <label>

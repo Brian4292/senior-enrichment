@@ -11,13 +11,14 @@ const UPDATE_STU = 'UPDATE_STU';
 const getStudent = students => ({type: GET_STU, students});
 const createStudent = student => ({type: CREATE_STU, student});
 
-export default function reducer (users = [], action) {
+export default function reducer (students = [], action) {
 switch (action.type) {
     case GET_STU:
-    return action.user;
-    
+    return action.students;
+    case SINGLE_STU:
+    return action.students
     default:
-    return users;
+    return students;
 }
 
 }
@@ -26,7 +27,7 @@ switch (action.type) {
 
 export const fetchStudents = () => dispatch => {
     axios
-    .get('api/students')
+    .get('/api/students')
     .then(response => {
       return response.data;
     })

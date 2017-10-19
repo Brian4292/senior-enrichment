@@ -1,22 +1,23 @@
-"use strict";
-import React, { Component } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import AllStudents from "./components/AllStudents";
-import AllCampus from "./components/Campus/AllCampus";
-import SingleCampus from "./components/SingleCampus";
-import AddStudent from "./components/AddStudent";
-import SingleStudent from "./components/SingleStudent";
-import UpdateStudent from "./components/Students/UpdateStudent";
-import Root from "./components/Root.js";
-import UpdateCampus from "./components/Campus/UpdateCampus";
-import AddCampus from "./components/Campus/AddCampus";
-import NavBar from "./components/NavBar";
-//import { fetchStudents } from './redux/students'
+'use strict';
+import React, { Component } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import AllStudents from './components/Students/AllStudents';
+import AllCampus from './components/Campus/AllCampus';
+import SingleCampus from './components/SingleCampus';
+import AddStudent from './components/AddStudent';
+import SingleStudent from './components/Students/SingleStudent';
+import UpdateStudent from './components/Students/UpdateStudent';
+import Root from './components/Root.js';
+import UpdateCampus from './components/Campus/UpdateCampus';
+import AddCampus from './components/Campus/AddCampus';
+import NavBar from './components/NavBar';
+import { fetchStudents } from './redux/students';
+import { connect } from 'react-redux';
 
-export default class Routes extends Component {
-  // componentDidMount () {
-  //   this.props.initialData();
-  // }
+class Routes extends Component {
+  componentDidMount () {
+    this.props.initialData();
+  }
   render() {
    return (<BrowserRouter>
       <div>
@@ -43,18 +44,20 @@ export default class Routes extends Component {
           </Switch>
         </div>
       </div>
-    </BrowserRouter>)
+    </BrowserRouter>);
   }
 }
 
-const mapProps = {};
+const mapProps = null;
 
 const mapDispatchtoProps = dispatch => ({
   initialData : () => {
-    dispatch
+    dispatch(fetchStudents());
+    //campus
   }
-})
+});
 
+export default connect(mapProps, mapDispatchtoProps)(Routes);
 
 //make funny 404
 // add campus done

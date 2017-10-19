@@ -12,7 +12,6 @@ export default class AllStudents extends Component {
   }
 
   componentDidMount() {
-    console.log('helelelfselgslglse')
     axios
       .get('api/students')
       .then(response => {
@@ -30,12 +29,9 @@ export default class AllStudents extends Component {
   render() {
     return (
       <div>
-        <Link to={'/enroll'}>
-          <button>Add Student</button>
-        </Link>
         <table>
           <tr>
-            <th>Firstname</th>
+            <th>Name</th>
             <th>Campus</th>
             <th>Expel</th>
           </tr>
@@ -43,15 +39,13 @@ export default class AllStudents extends Component {
             this.state.students.map(student => {
               return (
                 <tr key={student.id}>
-                  <Link to={`/students/${student.id}`}>
-                    <td>{student.name}</td>
-                  </Link>
-                  <Link to={`/campus/${student.campus.id}`}>
-                    <td>{student.campus.name}</td>
-                  </Link>
                   <td>
-                    <DeleteStudent delete={student.id} />
+                    <Link to={`/students/${student.id}`}>{student.name}</Link>
                   </td>
+                  <td>
+                    <Link to={`/campus/${student.campus.id}`}>{student.campus.name}</Link>
+                  </td>
+                  <td><DeleteStudent delete={student.id} /></td>
                 </tr>
               );
             })}

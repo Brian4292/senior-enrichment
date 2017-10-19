@@ -28,8 +28,6 @@ export default class SingleStudent extends Component {
 	}
 
   render() {
-      // fix back route to include all and grab the student
-	  // campus, add fake content, and profile picture
 	  const campus = this.state.campus;
 	  const student = this.state.student;
 	return (

@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import DeleteCampus from "./deleteCampus";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import DeleteCampus from './deleteCampus';
 
 export default class AllCampus extends Component {
   constructor() {
     super();
     this.state = {
       campuses: [],
-      selectedCampus: ""
+      selectedCampus: ''
     };
   }
 
   componentDidMount() {
     axios
-      .get("api/campus/")
+      .get('api/campus/')
       .then(response => {
         console.log(response.data);
         return response.data;
@@ -23,7 +23,7 @@ export default class AllCampus extends Component {
         this.setState({ campuses: campusList });
       })
       .catch(err => {
-        console.error("error");
+        console.error('error');
         console.error(err);
       });
   }
@@ -32,7 +32,6 @@ export default class AllCampus extends Component {
     console.log(this.state.selectedCampus.image)
     return (
       <ol>
-        <Link to={"/addcampus"}>Add Campus</Link>
         {this.state.campuses.length &&
           this.state.campuses.map(campus => {
             return (
@@ -45,8 +44,8 @@ export default class AllCampus extends Component {
                   <div
                     style={{
                       backgroundImage: `url(${campus.image})`,
-                      height: "512px",
-                      width: "512px"
+                      height: '512px',
+                      width: '512px'
                     }}
                   />
                 </Link>

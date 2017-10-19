@@ -1,7 +1,7 @@
 'use strict';
 import React from 'react';
 import { render } from 'react-dom';
-import { Link, BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import AllStudents from './components/AllStudents';
 import AllCampus from './components/Campus/AllCampus';
 import SingleCampus from './components/SingleCampus';
@@ -9,19 +9,16 @@ import AddStudent from './components/AddStudent';
 import SingleStudent from './components/SingleStudent';
 import UpdateStudent from './components/Students/UpdateStudent';
 import Root from './components/Root.js';
-import UpdateCampus from './components/Campus/UpdateCampus'; //do this
+import UpdateCampus from './components/Campus/UpdateCampus';
 import AddCampus from './components/Campus/AddCampus';
+import NavBar from './components/NavBar';
 
 function Main() {
   return (
     <BrowserRouter>
       <div>
-        <Link to={`/students`}>
-          <button>students</button>
-        </Link>
-        <Link to={`/`}>
-          <button>Campus</button>
-        </Link>
+        <NavBar />
+        <div id="content">
         <Switch>
           <Route exact path="/campus/:campusId" component={SingleCampus} />
           <Route exact path="/students" component={AllStudents} />
@@ -33,6 +30,7 @@ function Main() {
           <Route exact path="/" component={AllCampus} />
           <Route component={Root} /> {/*404 Page for the lulz*/}
         </Switch>
+        </div>
       </div>
     </BrowserRouter>
   );

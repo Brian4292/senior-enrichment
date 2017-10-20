@@ -51,14 +51,12 @@ class AddCampus extends Component {
             <input type="text" name="campusName" />
           </div>
         </label>
-        <label>
-        Image Url (if None Selected You will recieve a random Image):
-          <div>
+        <label>Image Url
+                    <div>
             <input type="text" name="campusImage" />
           </div>
         </label>
-        Content(short bio about the class):
-        <label>
+        <label>Content:
           <div>
             <textarea type="text" name="campusContent" />
           </div>

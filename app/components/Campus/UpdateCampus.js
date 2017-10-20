@@ -22,7 +22,6 @@ class updateCampus extends Component {
       content: this.state.campusContent,
     };
     const id = this.props.match.params.campusId;
-    console.log(id)
     axios
       .put(`/api/campus/${id}`, updateCampus)
       .then(res => res.data)
@@ -49,20 +48,16 @@ class updateCampus extends Component {
     // console.log(this.state)
     return (
       <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-        <label>
-        Edit Campus Name:
+        <label>Edit Campus Name:
           <div>
             <input type="text" name="campusName" />
           </div>
         </label>
-        <label>
-        Image Url (if None Selected You will recieve a random Image):
-          <div>
+        <label>Image Url          <div>
             <input type="text" name="campusImage" />
           </div>
         </label>
-        Content(short bio about the class):
-        <label>
+        <label> Content(short bio about the class):
           <div>
             <textarea type="text" name="campusContent" />
           </div>

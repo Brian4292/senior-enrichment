@@ -8,8 +8,8 @@ class UpdateStudent extends Component {
     this.state = {
       name: '',
       email: '',
-      //image
-      //content
+      image: '',
+      content:'',
       github: '',
       campusId: ''
     };
@@ -37,24 +37,31 @@ class UpdateStudent extends Component {
   render() {
     return (
       <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-        <label>
-          Name:
+        <label>Name:
           <div>
             <input type="text" name="name" />
           </div>
         </label>
-        <label>
-          Email:
+        <label> Email:
           <div>
             <input type="text" name="email" />
           </div>
-        </label>
-        Github Account:
+        </label>Github Account:
         <label>
           <div>
             <input type="text" name="github" />
           </div>
         </label>
+        <label>Image: 
+          <div>
+            <input type="text" name="image" />
+          </div>
+          </label>
+          <label>Content:
+          <div>
+            <input type="text" name="content" />
+          </div>
+          </label>
         <label> Select Campus:</label>
         <select name="campusId">
           <option selected="true" disabled="disabled">

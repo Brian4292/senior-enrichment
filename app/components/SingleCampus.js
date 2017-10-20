@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
 
-export default class AllCampus extends Component {
 
-  render() {
-    const campus = this.state.selectedCapmus;
-    console.log(campus.image);
+ function SingleCampus (props) {
+   console.log(props.match.params.campusId,'PARATAMS')
+    const campus = props.campuses.filter(campus=>{
+      return campus.id == props.match.params.campusId
+    })[0];
+    console.log(campus,'FILTERED')
+    const students = campus.students
+    console.log(students,'STUDENTS')
     return (
       <div>
         <img
@@ -16,9 +20,9 @@ export default class AllCampus extends Component {
           }}
           src={`../${campus.image}`}
         />
-        <h1>{this.state.selectedCapmus.name}'s Student List</h1>
-        {this.state.studentsList.length &&
-          this.state.studentsList.map(student => {
+        <h1>{campus.name}'s Student List</h1>
+        {
+          students.map(student => {
             return (
               <Link key={student.id} to={`/students/${student.id}`}>
                 <p key={student.name}>{student.name}</p>
@@ -26,7 +30,15 @@ export default class AllCampus extends Component {
               </Link>
             );
           })}
-      </div>
+      </div> 
     );
-  }
 }
+
+
+const mapState = ({ campuses, students }) => ({ campuses,students });
+
+const mapDispatch = {};
+
+export default connect(mapState, mapDispatch)(SingleCampus);
+
+

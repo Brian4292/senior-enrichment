@@ -17,13 +17,21 @@ export default function reducer(students = [], action) {
     case GET_STU:
       return action.students;
     case CREATE_STU:
-      return [action.students, ...students];
+      return [action.student, ...students];
     case DELETE_STU:
       return students.filter(student => student.id !== action.id);
+    case UPDATE_STU:
+    return students.map(student => (
+      action.user.id === student.id ? action.student : student
+    ));
     default:
       return students;
   }
 }
+
+// return users.map(user => (
+//   action.user.id === user.id ? action.user : user
+// ));
 
 //THUNK CREATORS
 

@@ -6,7 +6,7 @@ const Student = require('../db/models').Student;
 
 
 router.get('/', (req, res, next) => {
-  Campus.findAll()
+  Campus.findAll({ include: [{ all: true }] })
     .then(campus => {
       res.json(campus);
     })

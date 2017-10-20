@@ -20,18 +20,17 @@ export default function reducer(students = [], action) {
       return [action.student, ...students];
     case DELETE_STU:
       return students.filter(student => student.id !== action.id);
-    case UPDATE_STU:
-    return students.map(student => (
-      action.user.id === student.id ? action.student : student
-    ));
+      case UPDATE_STU:
+      return students.map(student => (
+       action.student.id === student.id ? action.user : user
+));
     default:
       return students;
   }
 }
 
-// return users.map(user => (
-//   action.user.id === user.id ? action.user : user
-// ));
+
+
 
 //THUNK CREATORS
 
@@ -78,11 +77,11 @@ export const createNewStudent = student => dispatch =>{
     });
 }
 
-export const updateCurrentStudent = id => dispatch => {
+export const updateCurrentStudent = (id ,update) => dispatch => {
   const action = updateStudent(id);
   dispatch(action)
   axios
-  .put(`/api/students/${id}`, studentForm)
+  .put(`/api/students/${id}`, update)
   .then(res => res.data)
   .then(result => {
     console.log('*********', result); // response json from the server!

@@ -31,7 +31,6 @@ console.log(event.target);
   }
 
   render() {
-    console.log(this.props);
     return (
       <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
         <label>

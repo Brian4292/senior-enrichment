@@ -21,7 +21,7 @@ function SingleStudent (props){
 	  {studentFound.content}
 	</article>
   </div> 
-		)
+		);
 }
 
 const mapState = ({ students }) => ({ students });

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import {updateCurrentStudent} from './../../redux/students';
 
@@ -21,14 +20,8 @@ class UpdateStudent extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const id = this.props.match.params.studentId;
-    axios
-      .put(`/api/students/${id}`, this.state)
-      .then(res => res.data)
-      .then(result => {
-        console.log('*********', result); // response json from the server!
-      }).then (() => {
-        this.props.history.push('/students');
-      });
+    console.log(id)
+    this.props.updateCurrentStudent(id,this.state);
   }
 
   handleChange(event) {
@@ -64,9 +57,9 @@ class UpdateStudent extends Component {
         <select name="campusId">
           <option selected="true" disabled="disabled">
             Campus
-          </option>
-          {this.state.campuses.length &&
-            this.state.campuses.map(campus => {
+          </option> {/* couldn't figure out how to use default value hence the error */}
+          {
+            this.props.campuses.map(campus => {
               return (
                 <option value={campus.id} key={campus.name}>
                   {campus.name}
@@ -80,8 +73,6 @@ class UpdateStudent extends Component {
     );
   }
 }
-
-
 
 const mapState = ({ students, campuses }) => ({ students, campuses });
 const mapDispatch = { updateCurrentStudent };

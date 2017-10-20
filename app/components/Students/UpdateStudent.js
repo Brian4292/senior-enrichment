@@ -20,8 +20,10 @@ class UpdateStudent extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const id = this.props.match.params.studentId;
-    console.log(id)
-    this.props.updateCurrentStudent(id,this.state);
+    const studentFound = this.props.students.filter(student =>{
+			return student.id == id;
+		})[0]
+    this.props.updateCurrentStudent(studentFound,this.state);
   }
 
   handleChange(event) {

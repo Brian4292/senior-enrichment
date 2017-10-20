@@ -8,10 +8,10 @@ class AddStudent extends Component {
     this.state = {
       name: '',
       email: '',
-      //image
-      //content
       github: '',
-      campusId: ''
+      campusId: '',
+      image: '',
+      content:''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -45,12 +45,21 @@ console.log(event.target);
             <input type="text" name="email" />
           </div>
         </label>
-        Github Account:
-        <label>
+        <label>Github Account:
           <div>
             <input type="text" name="github" />
           </div>
-        </label>
+          </label>
+          <label>Image: 
+          <div>
+            <input type="text" name="image" />
+          </div>
+          </label>
+          <label>Content:
+          <div>
+            <input type="text" name="content" />
+          </div>
+          </label>
         <label> Select Campus:</label>
         <select name="campusId">
           <option selected="true" disabled="disabled">

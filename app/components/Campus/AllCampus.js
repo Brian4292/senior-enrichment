@@ -10,11 +10,12 @@ function AllCampus(props) {
       {campusList.map(campus => {
           return (
             <div key={campus.id}>
-              <DeleteCampus delete={campus.id} />
               <Link to={`/campus/${campus.id}`}>
                 <br />
-                <Link to={`/campusedit/${campus.id}`}>Edit</Link>
                 <li>{campus.name}</li>
+                <Link to={`/campusedit/${campus.id}`}>Edit</Link>
+                <br/>
+              <DeleteCampus delete={campus.id} />
                 <div
                   style={{
                     backgroundImage: `url(${campus.image})`,

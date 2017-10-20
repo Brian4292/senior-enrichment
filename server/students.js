@@ -48,11 +48,20 @@ router.put('/:id', (req, res, next) => {
   const id = req.params.id;
   Student.findById(id)
     .then(studentToupdate => {
-      studentToupdate.update(req.body);
+     return studentToupdate.update(req.body);
     })
     .then(updatedStudent => {
-      res.json(updatedStudent);
+     return Student.findOne({
+      include: [{model: Campus}],
+      where: {
+        id: updatedStudent.id
+      }
     })
+    .then(eagerStudent=>{
+      res.json(eagerStudent)
+    })
+    })
+    
     .catch(next);
 });
 

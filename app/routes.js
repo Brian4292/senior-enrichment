@@ -14,13 +14,14 @@ import NavBar from './components/NavBar';
 import { fetchStudents } from './redux/students';
 import { connect } from 'react-redux';
 import { fetchCampuses } from './redux/campus';
+import history from './history';
 
 class Routes extends Component {
   componentDidMount () {
     this.props.initialData();
   }
   render() {
-   return (<BrowserRouter>
+   return (<BrowserRouter history={history}>
       <div>
         <NavBar />
         <div id="content">

@@ -19,7 +19,7 @@ export default class DeleteCampus extends Component {
     }
     render() { console.log(this.state)
 		return (
-            <button onClick={this.DeleteCampus}>Remove</button>
+            <button className="btn btn-danger" onClick={this.DeleteCampus}>Remove</button>
 		);
 
 	}

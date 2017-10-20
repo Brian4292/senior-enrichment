@@ -15,7 +15,7 @@ class DeleteStudent extends Component {
   }
   render() {
 		return (
-            <button onClick={this.deleteStudent}>Expel</button>
+            <button className="btn btn-danger" onClick={this.deleteStudent}>Expel</button>
 		);
 
   }

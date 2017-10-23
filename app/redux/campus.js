@@ -1,4 +1,5 @@
 import axios from 'axios';
+import history from '../history';
 
 const GET_CAMPUS = 'GET_CAMPUS';
 const CREATE_CAMPUS = 'CREATE_CAMPUS';
@@ -10,11 +11,10 @@ const createCampus = campus => ({ type: CREATE_CAMPUS, campus });
 const deleteCampus = id => ({ type: DELETE_CAMPUS, id });
 
 export default function reducer(campuses = [], action) {
+  console.log(action, 'fuck nosd')
   switch (action.type) {
     case GET_CAMPUS:
       return action.campuses;
-    // case SINGLE_STU:  should i put logic here
-    // return action.campuses;
     case CREATE_CAMPUS:
       return [action.campus, ...campuses];
     case DELETE_CAMPUS:
@@ -39,4 +39,18 @@ export const fetchCampuses = () => dispatch => {
       console.error('error');
       console.error(err);
     });
+}
+
+export const createNewCampus = campus => dispatch =>{
+  axios
+  .post('/api/campus', campus)
+  .then(res => res.data)
+  .then(result => {
+    console.log('*********', result); // response json from the server!
+    const action = createCampus(result);
+    dispatch(action);
+  })
+  .then(() => {
+  history.push('/');
+  });
 }

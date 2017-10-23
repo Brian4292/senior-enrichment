@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { withRouter } from 'react-router-dom';
+import {createNewCampus} from '../../redux/campus';
+import { connect } from 'react-redux';
+
 
 class AddCampus extends Component {
   constructor() {
     super();
     this.state = {
-      campusName: '',
-      campusImage: '',
-      campusContent: ''
+      name: '',
+      image: '',
+      content: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -16,20 +17,8 @@ class AddCampus extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const makeCampus = {
-      name: this.state.campusName,
-      image: this.state.campusImage,
-      content: this.state.campusContent,
-    };
-    axios
-      .post('/api/campus', makeCampus)
-      .then(res => res.data)
-      .then(result => {
-        console.log('*********', result); // response json from the server!
-      }).
-      then(() => {
-        this.props.history.push('/');
-      })
+    console.log(this.props)
+    this.props.createNewCampus(this.state);
   }
 
   handleChange(event) {
@@ -42,23 +31,22 @@ class AddCampus extends Component {
   }
 
   render() {
-    // console.log(this.state)
     return (
       <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
         <label>
         Campus Name:
           <div>
-            <input type="text" name="campusName" />
+            <input type="text" name="name" />
           </div>
         </label>
         <label>Image Url
                     <div>
-            <input type="text" name="campusImage" />
+            <input type="text" name="image" />
           </div>
         </label>
         <label>Content:
           <div>
-            <textarea type="text" name="campusContent" />
+            <textarea type="text" name="content" />
           </div>
         </label>
         <br />
@@ -68,4 +56,8 @@ class AddCampus extends Component {
   }
 }
 
-export default withRouter(AddCampus);
+const mapState = ({ campuses }) => ({ campuses });
+
+const mapDispatch = {createNewCampus};
+
+export default connect(mapState, mapDispatch)(AddCampus);

@@ -32,14 +32,6 @@ default:
   }
 }
 
-
-
-// case UPDATE_STU:
-// return students.map(student => (
-//  action.student.id == student.id ? action.user : user
-
-
-
 //THUNK CREATORS
 
 export const fetchStudents = () => dispatch => {

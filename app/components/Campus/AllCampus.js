@@ -15,7 +15,6 @@ function AllCampus(props) {
                 <li>{campus.name}</li>
                 <Link to={`/campusedit/${campus.id}`}>Edit</Link>
                 <br/>
-              <DeleteCampus delete={campus.id} />
                 <div
                   style={{
                     backgroundImage: `url(${campus.image})`,
@@ -24,6 +23,7 @@ function AllCampus(props) {
                   }}
                 />
               </Link>
+              <DeleteCampus delete={campus.id} />
             </div>
           );
         })}

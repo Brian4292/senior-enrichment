@@ -72,13 +72,14 @@ export const removeStudent = id => dispatch => {
 };
 
 export const createNewStudent = student => dispatch =>{
-    const action = createStudent(student);
-    dispatch(action);
+    
     axios
     .post('/api/students', student)
     .then(res => res.data)
     .then(result => {
       console.log('*********', result); // response json from the server!
+      const action = createStudent(result);
+      dispatch(action);
     })
     .then(() => {
     history.push('/students');

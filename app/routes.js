@@ -1,6 +1,6 @@
 'use strict';
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
 import AllStudents from './components/Students/AllStudents';
 import AllCampus from './components/Campus/AllCampus';
 import SingleCampus from './components/SingleCampus';
@@ -21,7 +21,7 @@ class Routes extends Component {
     this.props.initialData();
   }
   render() {
-   return (<BrowserRouter history={history}>
+   return (<Router history={history}>
       <div>
         <NavBar />
         <div id="content">
@@ -46,7 +46,7 @@ class Routes extends Component {
           </Switch>
         </div>
       </div>
-    </BrowserRouter>);
+    </Router>);
   }
 }
 

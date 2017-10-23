@@ -13,14 +13,7 @@ router.get('/', (req, res, next) => {
     .catch(next);
 });
 
-// router.get('/:id', (req, res, next) => {
-//   const id = req.params.id;
-//   Student.findById(id)
-//     .then(student => {
-//       res.json(student);
-//     })
-//     .catch(next);
-// });
+
 
 router.get('/:id', (req, res, next) => {
   const id = req.params.id;
@@ -39,8 +32,16 @@ router.get('/:id', (req, res, next) => {
 router.post('/', (req, res, next) => {
   Student.create(req.body)
     .then(createdStudent => {
-      res.json(createdStudent);
-    })
+      return Student.findOne({
+        include: [{model: Campus}],
+        where: {
+          id: createdStudent.id
+        }
+      })
+      .then(eagerStudent => {
+        res.json(eagerStudent)
+      })
+      })
     .catch(next);
 });
 
@@ -57,7 +58,7 @@ router.put('/:id', (req, res, next) => {
         id: updatedStudent.id
       }
     })
-    .then(eagerStudent=>{
+    .then(eagerStudent =>{
       res.json(eagerStudent)
     })
     })

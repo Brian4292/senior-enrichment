@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-
-export default class DeleteCampus extends Component {
+import { connect } from 'react-redux';
+import {removeCampus} from '../../redux/campus';
+class DeleteCampus extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -11,16 +11,18 @@ export default class DeleteCampus extends Component {
   }
  DeleteCampus(){
      const id = this.state.campusToDelete;
-        axios.delete(`/api/campus/${id}`)
-        .catch(err => {
-            console.error('error');
-            console.error(err);
-        });      
+     this.props.removeCampus(id);
     }
-    render() { console.log(this.state)
+    render() {
 		return (
             <button className="btn btn-danger" onClick={this.DeleteCampus}>Remove</button>
 		);
 
 	}
 }
+
+
+const mapState = ({ campuses }) => ({ campuses });
+const mapDispatch = { removeCampus };
+export default connect(mapState, mapDispatch)(DeleteCampus);
+

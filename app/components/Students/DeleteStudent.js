@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { withRouter } from 'react-router-dom'; //use history to redirect after promise resolve
 import { connect } from 'react-redux';
 import {removeStudent} from '../../redux/students';
 

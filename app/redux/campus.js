@@ -1,5 +1,6 @@
 import axios from 'axios';
 import history from '../history';
+import {onDeleteCampus} from './students'
 
 const GET_CAMPUS = 'GET_CAMPUS';
 const CREATE_CAMPUS = 'CREATE_CAMPUS';
@@ -18,7 +19,8 @@ export default function reducer(campuses = [], action) {
     case CREATE_CAMPUS:
       return [action.campus, ...campuses];
     case DELETE_CAMPUS:
-      return campuses.filter(campus => campus.id !== action.id);
+    console.log(campuses)
+      return  campuses.filter(campus => campus.id !== action.id);
     default:
       return campuses;
   }
@@ -54,3 +56,17 @@ export const createNewCampus = campus => dispatch =>{
   history.push('/');
   });
 }
+
+export const removeCampus = id => dispatch => {
+  dispatch(deleteCampus(id));
+  dispatch(onDeleteCampus(id));
+  axios
+    .delete(`api/campus/${id}`)
+    .then(response => {
+      return response.data;
+    })
+    .catch(err => {
+      console.error('error');
+      console.error(err);
+    });
+};

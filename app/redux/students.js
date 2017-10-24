@@ -5,12 +5,14 @@ const GET_STU = 'GET_STU';
 const CREATE_STU = 'CREATE_STU';
 const DELETE_STU = 'DELETE_STU';
 const UPDATE_STU = 'UPDATE_STU';
+const ON_DELETE_CAMPUS = 'ON_DELETE_CAMPUS';
 
 //ACTION CREATORS
 const getStudent = students => ({ type: GET_STU, students });
 const createStudent = student => ({ type: CREATE_STU, student });
 const deleteStudent = id => ({ type: DELETE_STU, id });
 const updateStudent = user => ({type: UPDATE_STU, user});
+export const onDeleteCampus = id => ({type: ON_DELETE_CAMPUS, id});
 
 export default function reducer(students = [], action) {
   switch (action.type) {
@@ -24,9 +26,12 @@ export default function reducer(students = [], action) {
       })
       case UPDATE_STU:
       return students.filter(student =>{
-        console.log(action.user)
         return (student.id !== action.user.id)
       }).concat(action.user)
+      case ON_DELETE_CAMPUS:
+      return students.filter(student=>{
+        return (student.campusId !== action.id)
+      })
 default:
       return students;
   }

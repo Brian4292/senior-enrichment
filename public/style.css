@@ -4,6 +4,7 @@
     padding-right: 35px;
     background-color: goldenrod;
     width: 100%;
+    position: fixed;
 }
 
 #nav li {
@@ -21,4 +22,10 @@
 
 #nav li a:hover {
     border-bottom: 2px solid #e00bf3;
+}
+
+#content{
+    border: 10px solid black;
+    padding: 25px;
+    top: 10px;
 }

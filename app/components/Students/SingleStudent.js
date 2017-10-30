@@ -6,19 +6,19 @@ function SingleStudent (props){
 		const id = props.match.params.studentId;
 		const studentFound = props.students.filter(student =>{
 			return student.id == id;
-		})[0]
+		})
 		return (
    <div>
 	<Link to={`/edit/${studentFound.id}`}>
 	  {" "}
 	  <button>Edit</button>{" "}
 	</Link>
-	<h1>{studentFound.name}</h1>
-	<img src={studentFound.image} alt="" />
+	<h1>{studentFound.length && studentFound[0].name}</h1>
+	<img src={studentFound.length && studentFound[0].image} alt="" />
 	<article>
-	  {`${studentFound.name} is part of the`}{" "}
-	  <Link to={`/campus/${studentFound.campus.id}`}>{studentFound.campus.name}</Link> Campus.{" "}
-	  {studentFound.content}
+	  {`${studentFound.length && studentFound[0].name} is part of the`}{" "}
+	  <Link to={`/campus/${studentFound.length && studentFound[0].campus.id}`}>{studentFound.length && studentFound[0].campus.name}</Link> Campus.{" "}
+	  {studentFound.length && studentFound[0].content}
 	</article>
   </div> 
 		);

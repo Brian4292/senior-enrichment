@@ -12,14 +12,12 @@ const createCampus = campus => ({ type: CREATE_CAMPUS, campus });
 const deleteCampus = id => ({ type: DELETE_CAMPUS, id });
 
 export default function reducer(campuses = [], action) {
-  console.log(action, 'fuck nosd')
   switch (action.type) {
     case GET_CAMPUS:
       return action.campuses;
     case CREATE_CAMPUS:
       return [action.campus, ...campuses];
     case DELETE_CAMPUS:
-    console.log(campuses)
       return  campuses.filter(campus => campus.id !== action.id);
     default:
       return campuses;
